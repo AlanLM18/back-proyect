@@ -44,22 +44,28 @@ export const login = async ({ username, password }) => {
         const tipoUsuario = usuarioCorrecto.tipoUsuario || "usuario";
 
         const token = await crearToken({
-            id: usuarioCorrecto._id.toString(), 
+            id: usuarioCorrecto._id.toString(),
             username: usuarioCorrecto.username,
             email: usuarioCorrecto.email,
             tipoUsuario: tipoUsuario
         });
 
-        // Ver qué se está enviando a Flutter
+        // Aquí se incluye tipoUsuario en la respuesta
         const respuesta = mensajes(200, tipoUsuario, "", token);
         console.log("📌 Respuesta enviada al frontend:", JSON.stringify(respuesta, null, 2));
         
-        return respuesta;
+        return {
+            status: respuesta.status,
+            tipoUsuario: tipoUsuario,  // Incluir tipoUsuario aquí
+            token: token,
+            mensajeUsuario: respuesta.mensajeUsuario
+        };
     } catch (error) {
         console.error("⚠️ Error en el login:", error);
         return mensajes(400, "Error en el inicio de sesión", error);
     }
 };
+
 
 
 
