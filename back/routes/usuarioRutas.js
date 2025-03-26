@@ -41,9 +41,11 @@ router.post("/inicioSesion", async (req, res) => {
 
         const respuesta = await login({ username, password });
 
+        // Aquí debes incluir tipoUsuario en la respuesta
         res.status(respuesta.status).json({
             mensaje: respuesta.mensajeUsuario,
-            token: respuesta.token // Enviar el token en el JSON
+            token: respuesta.token,  // Enviar el token
+            tipoUsuario: respuesta.tipoUsuario  // Incluir tipoUsuario
         });
 
     } catch (error) {
