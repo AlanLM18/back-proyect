@@ -4,7 +4,7 @@ import mongoose from "mongoose";
 // Conectar a MongoDB
 const mongoUri = "mongodb+srv://demo_user:caPwKFH62mMXDqjh@cluster0.rk3zm.mongodb.net/test?retryWrites=true&w=majority";
 
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(mongoUri)
   .then(() => console.log("Conectado a MongoDB Atlas"))
   .catch((err) => console.error("Error al conectar a MongoDB:", err));
 
@@ -84,6 +84,5 @@ function publicarMedicamento(datos) {
     else console.log("Datos de medicamento enviados a MQTT:", mensaje);
   });
 }
-
 
 export { client, temperatureHistory, publicarMedicamento };
