@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 import { mensajes } from "../libs/mensajes.js";
 
-const MONGO_CONN_URL = process.env.MONGO_URI;
+const MONGO_CONN_URL= 'mongodb+srv://demo_user:caPwKFH62mMXDqjh@cluster0.rk3zm.mongodb.net/test?retryWrites=true&w=majority';
 
 
 export async function conectarBD() {
